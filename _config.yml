@@ -6,8 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: "契克&柠檬黄"
-brief-intro: "System Research"
+title: "契克BLOG"
+brief-intro: "你是那抹明亮俏皮的柠檬黄吗？"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://cococomeon.github.io" # the base hostname & protocol for your site
 
@@ -23,7 +23,7 @@ zhihu_username:
 linkedIn_username:
 dribbble_username:
 
-description_footer: 刘梦华这只猪
+description_footer: 尝试记录生活学习工作的点滴
 
 # comments
 # two ways to comment, only choose one, and use your own short name
@@ -33,8 +33,8 @@ description_footer: 刘梦华这只猪
 # using Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: 52bbb620d9680fd85254                            #生成的clientID
-  clientSecret: d92cec378527800b0816d1bdd26dc71eb5dd0ccd    #生成的clientSecret
+  clientID: e4c1308042e6f9757e3e                            #生成的clientID
+  clientSecret: f1f764e58f1574fa91aa0a92ba5c09d51803c4f9    #生成的clientSecret
   repo: cococomeon.github.io    #仓库名称
   owner: cococomeon    #github用户名
   admin: cococomeon
@@ -44,8 +44,8 @@ gitalk:
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
 # hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
 # xxxxx字符串
-baidu_tongji_id: 2bb59fa5bdcce1298213fbf552392691
-#google_analytics_id: 207965150 # google 分析追踪id
+#baidu_tongji_id: 2bb59fa5bdcce1298213fbf552392691
+google_analytics_id: 207965150 # google 分析追踪id
 ga_domain: auto
 
 friends: [
