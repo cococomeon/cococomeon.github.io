@@ -18,7 +18,7 @@ twitter_username: #gaohaoyang126
 facebook_username: #gaohaoyang.water
 github_username:  cococomeon
 email: tschick1031@gmail.com
-weibo_username: 契克5654
+weibo_username: 斯丢皮Lee
 zhihu_username: 
 linkedIn_username:
 dribbble_username:
@@ -44,8 +44,8 @@ gitalk:
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
 # hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
 # xxxxx字符串
-#baidu_tongji_id: 2bb59fa5bdcce1298213fbf552392691
-google_analytics_id: 207965150 # google 分析追踪id
+baidu_tongji_id: 2bb59fa5bdcce1298213fbf552392691
+# google_analytics_id: 207965150 # google 分析追踪id
 ga_domain: auto
 
 friends: [
