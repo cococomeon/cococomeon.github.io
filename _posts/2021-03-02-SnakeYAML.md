@@ -8,7 +8,7 @@ banner: "/assets/images/banners/home.jpeg"
 
 ---
 
-## 一. API入口
+## **一. API入口**
 
 ```java
 Yaml yaml = new Yaml()
@@ -18,7 +18,7 @@ Yaml yaml = new Yaml()
 
 
 
-## 二. 基本用法
+## **二. 基本用法**
 
 snakeyaml支持从stream和string中加载文档
 
@@ -41,9 +41,9 @@ System.out.println(obj);
 
 
 
-## 二. 进阶用法
+## **二. 进阶用法**
 
-### 2.1 自定义类型解析
+### **2.1 自定义类型解析**
 
 ```yaml
 firstName: "John"
@@ -97,7 +97,7 @@ public void whenLoadYAMLDocumentWithTopLevelClass_thenLoadCorrectJavaObjectWithN
 }
 ```
 
-### 2.2 类型安全
+### **2.2 类型安全**
 
 当一个需要load的类的一个或者多个类有泛型集合类的时候，需要TypeDescription进行指定泛型的参数类型。因为运行时的list是经过了泛型擦除了， 运行时的list中的元素是Object，snakeyaml不知道转成什么类，需要通过TypeDescription来进行指定。
 
@@ -109,9 +109,9 @@ constructor.addTypeDescription(customTypeDescription);
 Yaml yaml = new Yaml(constructor);
 ```
 
-## 三. yaml转文件
+## **三. yaml转文件**
 
-### 3.1 基本用法
+### **3.1 基本用法**
 
 ```java
 public void whenDumpMap_thenGenerateCorrectYAML() {
@@ -128,7 +128,7 @@ public void whenDumpMap_thenGenerateCorrectYAML() {
 }
 ```
 
-### 3.2 自定义java对象序列化
+### **3.2 自定义java对象序列化**
 
 ```java
 public void whenDumpACustomType_thenGenerateCorrectYAML() {

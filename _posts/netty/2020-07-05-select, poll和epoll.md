@@ -14,7 +14,7 @@ netty 在构建服务器线程池的时候需要指定parent线程池和child线
 
 
 
-## 一. select 
+## **一. select **
 
 服务端每建立一个连接都相当于打开一个一个文件，获得这个文件的描述符(fd)，相同的四元组（源ip/源port/目标ip/目标port）对应同一个fd。select和poll有相似的地方，不一样的是select使用的是数组，有连接数限制，poll使用的是链表没有连接数限制。
 
@@ -44,7 +44,7 @@ select 和 poll都是需要轮询的查询整个fd_set, 当连接数上来以后
 
 
 
-## 二. epoll
+## **二. epoll**
 
 epoll主要有三个函数构成
 
@@ -54,7 +54,7 @@ epoll主要有三个函数构成
 
 
 
-### 2.1 调用过程
+### **2.1 调用过程**
 
 ![在这里插入图片描述]({{site.url}}/assets/images/select,poll,epoll.png)
 
@@ -66,9 +66,9 @@ epoll主要有三个函数构成
 
 
 
-### 2.2. 调用细节
+### **2.2. 调用细节**
 
-#### 2.2.1 epoll_create
+#### **2.2.1 epoll_create**
 
 函数定义
 
@@ -142,7 +142,7 @@ struct epitem {
 
 
 
-#### 2.2.2 epoll_ctl
+#### **2.2.2 epoll_ctl**
 
 函数定义
 
@@ -169,16 +169,16 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 
 
 
-#### 2.2.3 epoll_wait
+#### **2.2.3 epoll_wait**
 
 
 
-### 2.3 epoll的两种触发
+### **2.3 epoll的两种触发**
 
-#### 2.3.1 水平触发 LT(level triggered)
+#### **2.3.1 水平触发 LT(level triggered)**
 缺省的工作方式，并且同时支持block（阻塞）和no-block （非阻塞）socket。在这种做法中，内核告诉你一个文件描述符是否就绪了，然后可以对这个就绪的fd进行IO操作。只要有数据，内核会一直通知。
 
-#### 2.3.2 边缘触发 ET(edge-triggered)
+#### **2.3.2 边缘触发 ET(edge-triggered)**
 高速工作方式，只支持no-block（非阻塞） socket。在这种模式下，当描述符从未就绪变为就绪时，内核通过epoll通知。然后它会假设你知道文件描述符已经就绪，并且不会再为那个文件描述符发送更多的就绪通知，直到你做了某些操作导致那个文件描述符不再为就绪状态了。但是请注意，如果一直不对这个fd作IO操作(从而导致它再次变成未就绪)，内核不会发送更多的通知(only once)。
 ET模式在很大程度上减少了epoll事件被重复触发的次数，因此效率要比LT模式高`。epoll工作在ET模式的时候，必须使用非阻塞套接口，以避免由于一个文件句柄的阻塞读/阻塞写操作把处理多个文件描述符的任务饿死
 

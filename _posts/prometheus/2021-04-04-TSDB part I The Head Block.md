@@ -8,7 +8,7 @@ banner: "/assets/images/banners/home.jpeg"
 
 ---
 
-## 一. 内存结构
+## **一. 内存结构**
 
 ![]({{site.url}}/assets/images/2021-04-04-TSDB part I The Head Block.assets/tsdb1.svg)
 
@@ -21,7 +21,7 @@ banner: "/assets/images/banners/home.jpeg"
 
 一个sample(t,v)到tsdb的时候，先经过wal写入事务日志，然后放进Head block内存的chunk中， 当一个chunk满了以后会使用mmap将其flush到磁盘中， 然后经过一个固定的间隔时间， 默认2h， 多个chunkhui会被合并flush到disk中，形成灰色的block 1 2 3...n，然后再经过多个2h后，已经flush到disk的block会被合并压缩成一个更大的block。
 
-### 1.1 Series 组成
+### **1.1 Series 组成**
 
 一个series由两部分组成：labelset (lk, lv) + sample (timestamp，value)
 
@@ -35,7 +35,7 @@ index{labelset} ---> [chunk1, chunk2, chunk3....]
 
 下面我们就来打开一个Series里面，存储sample的的Head block中的数据结构
 
-### 1.2 sample的生命周期
+### **1.2 sample的生命周期**
 
 一下的讨论的范围是一个指标样本的生命周期， 对所有的指标样本来说都是一样的。
 

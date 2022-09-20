@@ -8,7 +8,7 @@ banner: "/assets/images/banners/home.jpeg"
 
 ---
 
-## 一. 简介
+## **一. 简介**
 
 gradle脚本是是以groovy脚本语言为基础， 基于DSL语法的自动化构建工具
 
@@ -22,7 +22,7 @@ gradle脚本是是以groovy脚本语言为基础， 基于DSL语法的自动化�
 
 
 
-## 二. 预备知识
+## **二. 预备知识**
 
 
 
@@ -88,7 +88,7 @@ gradle的实现是使用java代码写的，groovy可以通过自己的语法进�
 
 
 
-## 三. Project 项目
+## **三. Project 项目**
 
 gradle中的一个核心概念， 对应gradle中的一个接口Project， gradle的DSL语言中的函数语法名都是定义在这个接口Project中。
 

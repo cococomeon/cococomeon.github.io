@@ -8,9 +8,9 @@ banner: "/assets/images/banners/home.jpeg"
 
 ---
 
-## 一. 基础概念
+## **一. 基础概念**
 
-### 1.1 文档
+### **1.1 文档**
 
 1. 面向文档， 文档是最小的可搜索单位
 
@@ -51,7 +51,7 @@ json文档不需要预定义格式
 
 - _score 文档的相关信打分
 
-### 1.2 索引
+### **1.2 索引**
 
 *在es的文档语义中索引既可以做动词也可以做名词*
 
@@ -89,17 +89,17 @@ Dbrm: 对事务要求比较高
 
 
 
-### 1.3 节点
+### **1.3 节点**
 
 一个节点是一个elasticsearch实例，本质一个java进程，每个节点有自己的名字， 可以通过启动脚本-Enode.name指定,也可以在配置文件中进行指定
 
 
 
-#### 1.3.1 Master-eligible node(可选举节点)
+#### **1.3.1 Master-eligible node(可选举节点)**
 
 可参与选主流程的主节点，每个节点启动默认都是，可通过配置文件中的node.master=false进行指定
 
-#### 1.3.2 Master node(主节点)
+#### **1.3.2 Master node(主节点)**
 
 解释选举后成为主节点的节点。每个es节点上面都保存有整个集群的信息， 但是只有主节点可以修改集群的状态信息
 
@@ -109,29 +109,29 @@ Dbrm: 对事务要求比较高
 - 集群中所有的索引和mapping还有setting的信息
 - 分片的路由信
 
-#### 1.3.3 Data node(数据节点)
+#### **1.3.3 Data node(数据节点)**
 
 可以保存数据的节点叫做数据节点，负责保存分片数据在数据拓展上起到至关重要的作用
 
-#### 1.3.4 Coordinating Node(协调节点)
+#### **1.3.4 Coordinating Node(协调节点)**
 
 负责分发请求到每个合适的节点上面，并且最终把结果进行汇聚到一起，所有节点默认都具有协调节点的功能
 
-#### 1.3.5 Hot & Warm node()
+#### **1.3.5 Hot & Warm node()**
 
 hot节点就是硬件资源比较好的节点，负责更多的数据处理任务
 
 warm就是机器配置相对较低的节点， 这些节点就会负责存储一些相对比较旧一点的数据
 
-#### 1.3.6 Mechine Learning Node
+#### **1.3.6 Mechine Learning Node**
 
 机器学习节点，负责跑机器学习的JOB，用来检测异常
 
-#### 1.3.7 Tribe Node
+#### **1.3.7 Tribe Node**
 
 连接到不同的集群的节点， 在5.3开始淘汰， 使用elasticsearch中的一个Cross Cluster Search的功能进行替代
 
-### 1.4 分片
+### **1.4 分片**
 
 Primary shard(主分片)，主要用来解决数据的水平拓展性问题，通过分片将数据打散分布到集群中所有的不同的集群中。
 
@@ -144,19 +144,19 @@ Replica shard(复制分片)，主要用来解决数据的高可用性问题， �
 
 
 
-### 1.5 集群
+### **1.5 集群**
 
 elasticsearch是一个分布式的搜索系统。
 
-### 1.6 倒排索引
+### **1.6 倒排索引**
 
 正排索引就是文档id到内容，倒排索引就是文档内容到id的过程
 
 
 
-## 二. mapping
+## **二. mapping**
 
-### 2.1 什么是mapping
+### **2.1 什么是mapping**
 
 mapping类似数据库中的schema定义，作用：
 
@@ -167,7 +167,7 @@ mapping类似数据库中的schema定义，作用：
 
 一个mapping属于一个索引的type，每个文档都有自己的一个type
 
-### 2.2 字段类型
+### **2.2 字段类型**
 
 1. 简单类型
    - text/keyword
@@ -182,7 +182,7 @@ mapping类似数据库中的schema定义，作用：
 
 
 
-### 2.3 Dynamic Mapping
+### **2.3 Dynamic Mapping**
 
 作用：写入文档的时候，如果索引不存在，会自动创建索引和
 
@@ -190,7 +190,7 @@ mapping类似数据库中的schema定义，作用：
 
 缺点：有的复杂类型不一定推算正确，当字段的类型设置如果不对的时候会导致一些功能无法正常使用， 例如一些range查询
 
-#### 2.3.1 原理
+#### **2.3.1 原理**
 
 es动态映射类型的自动识别机制的原理是根据json字符串语法进行识别定义的，根据输入的字符串如果是一个json字符串就可以自动识别类型
 
@@ -206,7 +206,7 @@ es动态映射类型的自动识别机制的原理是根据json字符串语法�
 
 
 
-### 2.4 Mapping字段的修改
+### **2.4 Mapping字段的修改**
 
 - 新增字段
 
@@ -220,9 +220,9 @@ es动态映射类型的自动识别机制的原理是根据json字符串语法�
 
   
 
-### 2.5 显式mapping 定义
+### **2.5 显式mapping 定义**
 
-#### 2.5.1 定义方式
+#### **2.5.1 定义方式**
 
 PUT INDEX{
 
@@ -234,13 +234,13 @@ PUT INDEX{
 
 }
 
-#### 2.5.2 自定义建议
+#### **2.5.2 自定义建议**
 
 - 通过[官方文档]()纯手写定义
 - 通过写入一些样本数据生成动态的mapping定义，然后再根据api或者这个动态的mapping定义自己的映射
 - 删除索引
 
-### 2.6 常用mapping属性
+### **2.6 常用mapping属性**
 
 - Index 定义字段是否被索引
 
@@ -311,7 +311,7 @@ PUT INDEX{
 
   
 
-## 三. Analysis&Analyzer(分词与分词器)
+## **三. Analysis&Analyzer(分词与分词器)**
 
 **Analysis**文本分析， 就是将文本转换为一系列单词的过程， 也叫分词
 
@@ -319,7 +319,7 @@ PUT INDEX{
 
 
 
-### 3.1 Analyzer组成
+### **3.1 Analyzer组成**
 
 分词器就是专门做分词的组件， 分词器主要有三个部分组成
 
@@ -334,11 +334,11 @@ elasticsearch自带的分词器：
 
 
 
-### 3.2 自定义分词器
+### **3.2 自定义分词器**
 
 当elasticsearch自带的分词器无法满足时， 可以自定义分词器，通过组合不同的组件实现
 
-#### 3.2.1 Character Fliter
+#### **3.2.1 Character Fliter**
 
 在Tokenizer之前，对文本做一些特殊处理，例如增加删除以及替换字符，可以配置多个Character Fliter会影响Tokenizer的positions和offset的信息。下面是一些自带的Character Fliter 
 
@@ -346,7 +346,7 @@ elasticsearch自带的分词器：
 - Mapping - 字符串替换
 - Pattern replace - 正则匹配替换
 
-#### 3.2.2 Tokenizer
+#### **3.2.2 Tokenizer**
 
 根据一定的规则，将原始的文本切分为词（term or token)
 
@@ -361,7 +361,7 @@ elasticsearch中自带的一些tokenizer：
 
 除此之外可以通过java开发一些插件，实现自己的Tokenizer
 
-#### 3.2.3 Token Fliter
+#### **3.2.3 Token Fliter**
 
 将Tokenizer输出的单次，进行二次加工，自带的Token Fliters
 
@@ -380,7 +380,7 @@ POST _analyzer{
 }
 ```
 
-## 四. 搜索
+## **四. 搜索**
 
 elasticsearch搜索主要可以分为两类搜索， URI Search 和 Request Body Search两种
 
@@ -398,7 +398,7 @@ elasticsearch搜索主要可以分为两类搜索， URI Search 和 Request Body
 
 
 
-### 4.1 uri search
+### **4.1 uri search**
 
 使用q进行指定查询字符串，同时使用kv键值对进行查询
 
@@ -419,7 +419,7 @@ Get /cmc/_search?q=serviceName&df=service&sorlt=year:desc&from=0&size=10&timeout
 - sort排序，from和size用于分页
 - profile可以查看查询是如何被执行的
 
-#### 4.1.1 query string syntax（查询表达式）
+#### **4.1.1 query string syntax（查询表达式）**
 
 1. 指定字段查询vs泛查询
 
@@ -467,7 +467,7 @@ Get /cmc/_search?q=serviceName&df=service&sorlt=year:desc&from=0&size=10&timeout
 
 9. 模糊匹配与近似查询
 
-### 4.2 request body search
+### **4.2 request body search**
 
 ```java
 curl -xget "地址/索引名称/_search" -H "Content-Type:application/json" -d {
@@ -491,7 +491,7 @@ curl -xget "地址/索引名称/_search" -H "Content-Type:application/json" -d {
 
   
 
-### 4.3 查询表达式
+### **4.3 查询表达式**
 
 - match
 
@@ -548,16 +548,16 @@ curl -xget "地址/索引名称/_search" -H "Content-Type:application/json" -d {
 
   
 
-## 五. Index templates 索引模板
+## **五. Index templates 索引模板**
 
-### 5.1 什么是index templates?
+### **5.1 什么是index templates?**
 
 - 帮助你设定Mapping和Setting，并按照一定的规则自动匹配到新创建的索引上
 - 模板仅在一个索引被创建时，才会起作用，修改模板不会影响已创建的索引
 - 可以设置多个索引模板，这些设置会被merge在一起
 - 可以指定order的数值，控制merging的过程
 
-## 5.2 index templates工作方式
+## **5.2 index templates工作方式**
 
 当一个索引被创建时
 
@@ -584,7 +584,7 @@ PUT _template/模板名称{
 
 
 
-### 5.3 Dynamic Template 动态模板
+### **5.3 Dynamic Template 动态模板**
 
 前面的index template是应用在所有的index上面的，dynamic template是应用在一个具体的index上面的。
 
@@ -596,7 +596,7 @@ PUT _template/模板名称{
 - is开头的字段都设置成boolean
 - long_开头的都设置成long类型
 
-### dynamic 实践
+### **dynamic 实践**
 
 ```java
 put index{
@@ -618,24 +618,24 @@ put index{
 
 
 
-## 六. Aggregation 聚合
+## **六. Aggregation 聚合**
 
 聚合应用实例：旅游网站中的那些搜索选项的勾选后的聚合
 
-### 6.1 集合分类
+### **6.1 集合分类**
 
 - Bucket Aggregation - 一些满足特定条件的文档的集合
 - Metric Aggregation - 一些数学运算，对文档字段进行统计分析
 - Pipeline Aggregation - 对其他的聚合结果进行二次聚合
 - Matrix Aggregation - 支持对多个字段的操作并提供一个结果矩阵
 
-### 6.2 bucket & metric
+### **6.2 bucket & metric**
 
 bucket - 一组满足条件的文档，类似sql 中的 group
 
 metric - 一系列的数学统计方法，类似sql中的count
 
-#### 6.2.1 metric
+#### **6.2.1 metric**
 
 - 基于数据集计算结果， 支持在字段上进行计算， 也支持在脚本（painless script) 产生的结果进行计算
 - 大多都metric计算都只输出一个值
@@ -645,7 +645,7 @@ metric - 一系列的数学统计方法，类似sql中的count
   - percentiles 根据百分位数输出不同的数值
   - percentiles_ranks 
 
-#### 6.2.2 bucket
+#### **6.2.2 bucket**
 
 ```java
 GET INDEX/_search
@@ -671,7 +671,7 @@ GET INDEX/_search
 }
 ```
 
-#### 6.2.3嵌套
+#### **6.2.3嵌套**
 
 在已经聚合出来的结构在再进行聚合查询
 
