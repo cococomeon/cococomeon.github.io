@@ -1,6 +1,13 @@
+---
+layout: post
+title: Best Practice of coding
+subtitle:
+categories: Coding
+tags: []
+banner: "/assets/images/banners/home.jpeg"
+---
 
-
-1. CAS Lock Free
+## CAS Lock Free
 当某一个属性可能会被并发更新的时候，我们可以通过锁的方式进行同步，避免出现多线程问题。但是这个锁的粒度是在应用层的，粒度大。
 因此我们可以借助java的cas特性，在**应用层无需加锁**也能保证属性的多线程并发的安全性。
 
@@ -33,3 +40,39 @@ public class demo {
 
 
 ```
+
+
+## 位运算求余
+先说结论与要求：当长度len等于2的n次幂时，a & (len-1) = a % len。
+
+论证：
+len为2的n次幂的时候，<br>
+`len`的二进制形如：0000 1000, <br>
+`len-1`二进制形如：0000 0111。<br>
+由于后面的位都是1，与其做与运算的时候肯定小于len，符合除法规则
+
+```java
+//如何获取一个数最近的二次幂
+public class demo{
+  static final int tableSizeFor(int cap) { //jdk hashmap中的方法
+    int n = cap -1;
+    n |= n>>>1;   //将最高位的1复制1个，得到2个1
+    n |= n>>>2;		//将上面得到的2个1复制，得到4个1
+    n |= n>>>4;		//将上面得到的4个1复制，得到8个1
+    n |= n>>>8;		//将上面得到的8个1复制，得到16个1
+    n |= n>>>16;	//将上面得到的16个1复制，得到32个1
+    return cap;
+  }
+
+  private static int normalizeTicksPerWheel(int ticksPerWheel) { //xxl-job中的方法
+    int normalizedTicksPerWheel = 1;
+    while (normalizedTicksPerWheel < ticksPerWheel) {
+        normalizedTicksPerWheel <<= 1;
+    }
+    return normalizedTicksPerWheel;
+  }
+}
+```
+
+
+
