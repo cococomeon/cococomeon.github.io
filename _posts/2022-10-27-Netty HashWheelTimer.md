@@ -25,10 +25,10 @@ HashWheelTimer功能是添加一个任务，指定在一段时间后执行。只
 
 ## 一. **数据模型**
 
-主要有两个数据结构，一个是构成时间轮的，一个是构成时间轮的每个格子中的
+主要有两个数据结构，一个是构成时间轮的结构的HashedWheelBucket，一个是构成时间轮的每个格子中数据的HashedWheelTimeout。
 
 ### 1.1 **HashedWheelTimeout**
-bucket中的每一个定时任务的封装，形成一个链表。每个定时任务中还有一个round属性
+bucket中的每一个定时任务的封装，形成一个链表。每个定时任务中还有一个round属性，表示还要转多少轮才轮到它。
 timeout中保存的属性：
 1. long类型的deadline，表示的是距离startTime的时间长度
 2. remainingRounds，剩余的的转动的轮数，其实上面的deadline一项就足够确定定时任务的执行时间的了。
