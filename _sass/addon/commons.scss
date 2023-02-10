@@ -1550,7 +1550,10 @@ $sidebar-display: "sidebar-display";
     max-width: $main-content-max-width;
   }
 
-//   #core-wrapper,
+  #core-wrapper {
+    padding-right: 3.0rem !important;
+  }
+
   #tail-wrapper {
     padding-right: 4.5rem !important;
   }
